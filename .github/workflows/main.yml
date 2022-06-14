@@ -23,21 +23,24 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
-
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
-
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
+      - uses: actions/checkout@v2
+      - name: Run tests
         run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
-      - name: - name: Build and Push Docker image
-        uses: mr-smithers-excellent/docker-build-push@v4
-        with:
-          image: marigleta/ajc-formation
-          registry: docker.io
-          usename:  ${{secrets.DOCKET_USERNAME}}
-          password: ${{secrets.DDOCKER_PASSWORD}}
+          pip install pytest
+          pytest
+      - name: build docker image
+        run:
+          docker build -t Projet_test
+      - name: docker login
+        env:
+          DOCKER_USER: ${{secrets.DOCKER_USERNAME}}
+          DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
+        run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+      - name: docker tag
+        run: docker tag Projet_test: latest Marigleta/AJCFormation
+      - name: docker push
+        run: docker push Marigleta/AJCFormation
+
+
+
+
