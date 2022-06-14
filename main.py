@@ -1,3 +1,4 @@
+#commentaire
 def count_char(password):
     i = 0
     for letter in password:
