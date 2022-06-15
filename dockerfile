@@ -4,7 +4,7 @@ RUN apt-get update
 
 RUN apt-get install python-pip -y
 
-WORKDIR /Gela
+WORKDIR /random
 
 COPY . .
 
