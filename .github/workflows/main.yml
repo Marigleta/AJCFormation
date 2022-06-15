@@ -30,7 +30,7 @@ jobs:
           pytest
       - name: build docker image
         run:
-          docker build -t Projet_test
+          docker build -t Projet_test .
       - name: run docker image
         run:
           docker run Projet_test
