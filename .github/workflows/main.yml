@@ -28,9 +28,9 @@ jobs:
           DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
         run:  docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
       - name: docker tag
-        run:  docker tag Projet_test:latest marigleta/ajc-formation:tagname
+        run:  docker tag Projet_test:latest marigleta/ajc-formation:test
       - name: docker push
-        run:  docker push marigleta/ajc-formation:tagname
+        run:  docker push marigleta/ajc-formation:test
 
 
 
