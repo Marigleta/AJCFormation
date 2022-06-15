@@ -53,7 +53,7 @@ def test_check_if_valid_password():
     expected1 = False
     expected2 = False
     expected3 = False
-    expected4 = True
+    expected4 = False
 
     result1 = check_if_valid_password(input1)
     result2 = check_if_valid_password(input2)
