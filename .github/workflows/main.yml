@@ -24,22 +24,25 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-      - name: Run tests
+      - name: Run test
         run: |
           pip install pytest
           pytest
       - name: build docker image
         run:
           docker build -t Projet_test
+      - name: run docker image
+        run:
+          docker run Projet_test
       - name: docker login
         env:
           DOCKER_USER: ${{secrets.DOCKER_USERNAME}}
           DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
         run:  docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
       - name: docker tag
-        run:  docker tag Projet_test:latest marigleta/ajc-formation
+        run:  docker tag Projet_test:latest marigleta/ajc-formation:tagname
       - name: docker push
-        run:  docker push marigleta/ajc-formation
+        run:  docker push marigleta/ajc-formation:tagname
 
 
 
