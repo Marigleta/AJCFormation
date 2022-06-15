@@ -3,11 +3,11 @@
 name: CI
 on: [push]
 jobs:
-  test_docker:
+    test_build_run_push:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
 
       - name: run tests
         run: |
