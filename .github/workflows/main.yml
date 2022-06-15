@@ -39,7 +39,7 @@ jobs:
       - name: docker tag
         run:  docker tag Projet_test:latest marigleta/ajc-formation
       - name: docker push
-        run:  docker push marigleta/ajc-formation:Projet_test
+        run:  docker push marigleta/ajc-formation
 
 
 
