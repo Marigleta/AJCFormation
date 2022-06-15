@@ -8,7 +8,7 @@ WORKDIR /Gela
 
 COPY . .
 
-CMD ["python", "Projet_test.py"]
+CMD ["python", "projet_test.py"]
 
 
 
